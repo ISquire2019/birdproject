@@ -1,0 +1,78 @@
+/*
+Programmer:
+Isaiah Sule
+Duke Ellington
+Pedro Benegas
+
+
+Date: 3-28-2019 --->>> 3-31-2019
+
+*/
+#include <iostream>
+#include <iomanip>
+#include <time.h> //DO I HAVE TO USE THIS FOR RAND?
+#include <cstdlib>//i think it's actually this one
+
+using namespace std;
+
+//Prototypes
+int displayMenu();
+void randomInt(int &, int &, int);
+
+int main()
+{
+    srand(time(NULL)); // need this to seed!
+
+    int difficulty;
+    int a,b;
+    //Choose difficulty
+    difficulty = displayMenu();
+
+    //generate a question
+    randomInt(a,b, difficulty);
+
+    return 0;
+}
+
+int displayMenu() //displays difficulty settings and asks the user to choose one
+{
+    int difficulty;
+    do
+    {
+    cout << "1. Easy" << endl;
+    cout << "2. Moderate" << endl;
+    cout << "3. Advanced" << endl;
+    cout << "Choose your difficulty." << endl;
+    cin >> difficulty;
+    }
+    while(cin.fail()); //here it's still missing defense programming right?
+
+    return difficulty;
+}
+
+void randomInt(int &a, int &b, int levelDif) //generates two random variables to use for question //THIS IS THE PART I NEED HELP WITH, THE RAND FUNCTION
+{
+    // i researched a little about randomness, i found this is how to do it
+    //i tested it and it works, i dont know how to procede tho
+    switch(levelDif)
+    {
+    case 1:
+        a = rand() % 10; //1-9
+        b = rand() % 10; //1-9
+        break;
+    case 2:
+        a = (rand() % 100) + 10; // 1-100
+        b = (rand() % 100) + 10;
+        break;
+    case 3:
+        a = (rand() % 10000) + 1000;
+        b = (rand() % 10000) + 1000;
+        break;
+    default:
+        cout << "Something went wrong. Run the program again." << endl;
+        cout << "Exiting..." << endl;
+        break;
+    }
+}
+
+
