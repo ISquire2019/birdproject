@@ -8,9 +8,11 @@ Pedro Benegas
 Date: 3-28-2019 --->>> 3-31-2019
 
 */
+
 #include <iostream>
 #include <iomanip>
-#include <time.h> //DO I HAVE TO USE THIS FOR RAND? 
+#include <cstdlib>
+#include <time.h>
 
 using namespace std;
 
@@ -20,6 +22,7 @@ void randomInt(int &, int &, int);
 
 int main()
 {
+    unsigned seed = time((NULL));
     srand(seed);
     int difficulty;
     int a,b;
@@ -41,14 +44,13 @@ int displayMenu() //displays difficulty settings and asks the user to choose one
     cout << "3. Advanced" << endl;
     cout << "Choose your difficulty." << endl;
     cin >> difficulty;
-    }while(cin.fail());
+    }while(cin.fail() || difficulty > 3);
 
     return difficulty;
 }
 
-void randomInt(int &a, int &b, int levelDif) //generates two random variables to use for question //THIS IS THE PART I NEED HELP WITH, THE RAND FUNCTION
+void randomInt(int &a, int &b, int levelDif) //generates two random variables to use for question
 {
-
     switch(levelDif)
     {
     case 1:
@@ -68,4 +70,11 @@ void randomInt(int &a, int &b, int levelDif) //generates two random variables to
         cout << "Exiting..." << endl;
         break;
     }
+    cout << "In randomInt, a is " << a << endl;
+    cout << "In randomInt, b is " << b << endl;
 }
+
+
+
+
+
